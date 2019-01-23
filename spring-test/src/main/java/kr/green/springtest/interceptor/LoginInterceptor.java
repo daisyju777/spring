@@ -15,11 +15,11 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 
 	@Override
 	public void postHandle(
-	    HttpServletRequest request, HttpServletResponse response, 
+	    HttpServletRequest request, HttpServletResponse response, //response는 컨트롤러에서 보내는정보. 
 	    Object handler, ModelAndView modelAndView)
 	    throws Exception {
 	    ModelMap modelMap = modelAndView.getModelMap();
-	    AccountVo user = (AccountVo)modelMap.get("user"); //jsp로 user를 넘겨주기 전에 가로챔
+	    AccountVo user = (AccountVo)modelMap.get("user"); // 컨트롤러에서 jsp로 user를 넘겨주기 전에 가로챔
 
 	    if(user != null) {
 	        HttpSession session = request.getSession();
