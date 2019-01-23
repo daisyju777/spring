@@ -19,7 +19,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 	    Object handler, ModelAndView modelAndView)
 	    throws Exception {
 	    ModelMap modelMap = modelAndView.getModelMap();
-	    AccountVo user = (AccountVo)modelMap.get("user");
+	    AccountVo user = (AccountVo)modelMap.get("user"); //jsp로 user를 넘겨주기 전에 가로챔
 
 	    if(user != null) {
 	        HttpSession session = request.getSession();

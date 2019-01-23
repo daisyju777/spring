@@ -29,4 +29,17 @@ public class MainController {
 		return "redirect:/";
 	}
 	
+	@RequestMapping(value = "/signup", method = RequestMethod.GET)
+	public String signupGet(Model model) {
+		return "signup";
+	}
+	
+	@RequestMapping(value = "/signup", method = RequestMethod.POST)
+	public String signupPost(Model model, AccountVo userInfo) {
+		boolean isUser = accountService.signup(userInfo); //accountService.signin(loginInfo)는 결과로 객체정보를 전달해줌
+		if (isUser)
+			return "redirect:/";
+		return "redirect:/signup"; //아이디 중복일 경우에는 회원가입실패함
+	}
+	
 }
