@@ -17,8 +17,8 @@ public class AccountServiceImp implements AccountService{
 	
 	@Override
 	public AccountVo signin(AccountVo loginInfo) {
-		AccountVo user = accountDao.getAccount(loginInfo.getId());
-		if(passwordEncoder.matches(loginInfo.getPw(), user.getPw()))
+		AccountVo user = accountDao.getAccount(loginInfo.getId()); //DB에서 검색이 안되면 user값에 null이 들어감
+		if(user != null && passwordEncoder.matches(loginInfo.getPw(), user.getPw()))
 			return user;
 		return null;
 	}
