@@ -4,40 +4,49 @@
 <head>
 	<title>회원가입</title>
 	<script src="//code.jquery.com/jquery-3.3.1.js"></script>
+	<%-- 
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/bootstrap.css">
+	--%>
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/signup.css">
 </head>
 <body>
-	<h1>회원가입</h1>
 	<form method="post" action="<%=request.getContextPath()%>/signup" id="form">
-		<div>
-			<input type="text" name="id" id="id">
-			<button id="dup" type="button">중복체크</button>
-		</div>
-		<div>
-			<input type="password" name="pw">
-		</div>
-		<div>
-			<input type="email" name="email">
-		</div>
-		<div>
+		<div class="container">
+			<h1>회원가입</h1>
+			<p>회원 정보를 입력해주세요.</p>
+	    	<hr>
+			
+			<label for="id">ID</label>
+			<input type="text" placeholder="아이디를 입력해주세요" name="id" id="id" class="form-control" required>
+			<button id="dup" type="button" class="btn btn-primary btn-sm">중복체크</button>
+			
+			<label for="pw">Password</label>
+			<input type="password" placeholder="비밀번호를 입력해주세요" name="pw" id="pw" class="form-control" required>
+			
+			<label for="email">Email</label>
+			<input type="email" placeholder="이메일을 입력해주세요" name="email" id="email" class="form-control" required>
+			
+			<label>성별</label>
 			<input type="radio" value="male" name="gender" id="male" checked>
 			<label for="male">남성</label>
 			<input type="radio" value="male" name="gender" id="female" checked>
 			<label for="female">여성</label>
+	
+			<button type="button" id="btnOk" class="btn btn-outline-secondary clearfix">회원가입</button>
 		</div>
-		<button type="button" id="btnOk">회원가입</button>
 	</form>
 	<script>
 	var dup = 0; 
     $('#dup').click( function() {
         var id = "";
         id = $('#id').val();
-        $.ajax({
-        	async:true,
+        $.ajax({ //json형태로 데이터가들어감. $.ajax({})안에 객체가 값으로 들어옴
+        	async:true,      //동기화 여부 결정
         	type:'POST',
-        	data:id,
+        	data:id,  //보낼 데이터를 적어줌. 여기서는 id만 보내줌. 여러개를 보내고 싶으면 배열이나 오브젝트로 보냄
             url: '/springtest/signup/dup',
-            dataType:'json',
-            contentType:'application/json; charset=UTF-8',
+            dataType:'json', /*json을 사용하기 위해서 pom.xml에 의존성 추가*/
+            contentType:'application/json; charset=UTF-8', 
             success: function(data) {
 				//console.log(data.dup);
 				if(data.dup){
@@ -47,6 +56,9 @@
 					dup = -1;
 					alert('사용 가능한 아이디입니다.');
 				}
+            }, 
+            error:function(jqXHR,testStatus,errorThorwn){
+             //성공은 aucces 실패는 eer로 처리함
             }
         });
     })

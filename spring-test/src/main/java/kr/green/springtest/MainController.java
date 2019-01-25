@@ -53,7 +53,7 @@ public class MainController {
 	@RequestMapping(value = "/signup/dup")
 	@ResponseBody  //요청정보에대해 내가 원하는 데이터로 전송해줌
 	public Map<Object, Object> idcheck(@RequestBody String id){
-		Map<Object, Object> map = new HashMap<Object, Object>();
+		Map<Object, Object> map = new HashMap<Object, Object>();  //bojet 앞에는 키값
 		boolean dup = accountService.isDuplicated(id);
 		map.put("dup",dup);
 		return map;
@@ -65,4 +65,5 @@ public class MainController {
 		session.removeAttribute("user"); //세션에서  사용자 정보 제거
 		return "redirect:/bbs/list";
 	}
+	
 }
