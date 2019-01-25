@@ -9,6 +9,12 @@
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/bootstrap.css">
 </head>
 <body>
+ <c:if test="${user != null}">
+ 	<a href="<%=request.getContextPath()%>/signout">로그아웃</a>
+ </c:if>
+ <c:if test="${user == null}">
+ 	<a href="<%=request.getContextPath()%>/">로그인</a>
+ </c:if>
  <!--${user.id}    입력된 id가 세션에 저장됨. user.getid()의 의미임. 컨트롤러에서 model.addAttrubute 해주지 않아도됨 -->
  <table class="table table-bordered">
  	<tr>
