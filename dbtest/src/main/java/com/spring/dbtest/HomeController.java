@@ -1,5 +1,7 @@
 package com.spring.dbtest;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.spring.dbtest.service.UserService;
+import com.spring.dbtest.vo.UserVo;
 
 
 @Controller
@@ -30,4 +33,11 @@ public class HomeController {
 	    // return "home";
 	    return "redirect:/";
 	  }
+	 
+	 @RequestMapping(value="/list", method=RequestMethod.GET)
+	 public String listGet(Model model, UserVo userVo) {
+	   List<UserVo> getList =  userService.getListView(userVo);
+	   model.addAttribute("list",getList);
+	   return "list";
+	 }
 }

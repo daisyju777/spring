@@ -6,4 +6,7 @@
 	<insert id="register">
 		insert into dbtest(id, pwd) values(#{id},#{pwd});
 	</insert>
+	<select id="getListView" resultType="com.spring.dbtest.vo.UserVo">
+		select * from dbtest order by idx desc;
+	</select>
 </mapper>

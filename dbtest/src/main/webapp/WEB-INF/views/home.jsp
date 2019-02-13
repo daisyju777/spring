@@ -14,5 +14,10 @@
 </form> 
 <P>가입한 아이디는 : ${id}</P>
 <P>가입한 비밀번호는 : ${pwd}</P>
+<hr/>
+<p><a href="<%=request.getContextPath() %>/list">전체리스트</a>
+<p><a href="<%=request.getContextPath() %>/search">개별자료검사</a>
+<p><a href="<%=request.getContextPath() %>/update">수정하기</a>
+<p><a href="<%=request.getContextPath() %>/delete">삭제하기</a>
 </body>
 </html>
