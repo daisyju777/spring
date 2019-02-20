@@ -23,5 +23,20 @@ public class UserServiceIMP implements UserService {
     return userDao.getListView(userVo);
   }
 
+  @Override
+  public List<UserVo> getSearchView(String search) {
+    return userDao.getSearchView(search);
+  }
+
+  @Override
+  public void userUpdate(String id, String pwd) {
+    userDao.userUpdate(id, pwd);
+  }
+
+  @Override
+  public void userDelete(String id, String pwd) {
+    userDao.userDelete(id, pwd);
+  }
+
   
 }

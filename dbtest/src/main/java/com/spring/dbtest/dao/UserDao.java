@@ -12,4 +12,10 @@ public interface UserDao {
 
   public List<UserVo> getListView(@Param("vo") UserVo userVo);
 
+  public List<UserVo> getSearchView(@Param("search") String search);
+
+  public void userUpdate(@Param("id") String id, @Param("pwd") String pwd);
+
+  public void userDelete(@Param("id") String id, @Param("pwd") String pwd);
+
 }

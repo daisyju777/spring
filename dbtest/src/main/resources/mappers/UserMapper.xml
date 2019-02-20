@@ -9,4 +9,18 @@
 	<select id="getListView" resultType="com.spring.dbtest.vo.UserVo">
 		select * from dbtest order by idx desc;
 	</select>
+	
+	<select id="getSearchView" resultType="com.spring.dbtest.vo.UserVo">
+    <!-- select * from dbtest where id like concat('%1%'); -->
+    select * from dbtest where id like concat('%',#{search},'%');
+    </select>
+  
+  	<update id="userUpdate">
+  		<!-- 조건을 안주고 업데이트하면 모든 자료가 업데이트됨. 조심하기 -->
+  		update dbtest set pwd=#{pwd} where id=#{id};
+  	</update>
+  	
+  	<delete id="userDelete">
+  		delete from dbtest where id=#{id} and pwd=#{pwd};
+  	</delete>
 </mapper>
