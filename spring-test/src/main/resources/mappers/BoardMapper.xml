@@ -23,4 +23,13 @@
 			state = #{board.state}
 		where id = #{board.id}
 	</update>
+	
+	<select id="getCountUserLists" resultType="int"> <!-- 페이징처리시필요.(전체개수) -->
+      select count(id) from board;
+    </select>
+  
+    <select id="getUserLists" resultType="kr.green.springtest.vo.BoardVo"> <!-- 페이징처리시필요. -->
+      select * from board
+        order by id desc limit #{cri.startPage},#{cri.perPagenum};
+    </select>
 </mapper>

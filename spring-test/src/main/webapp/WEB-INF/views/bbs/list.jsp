@@ -52,11 +52,31 @@ hr {
 	 	<c:forEach items="${list}" var="board">  <!-- list에서 하나씩 꺼내서 board에 저장해서 사용함 -->
 	 		<tr>
 	 			<td>${board.id}</td>
-	 			<td><a href="<%=request.getContextPath()%>/bbs/detail?id=${board.id}">${board.title}</a></td>
+	 			<td><a href="<%=request.getContextPath()%>/bbs/detail?id=${board.id}&page=${pageMaker.criteria.page}">${board.title}</a></td>
 	 			<td>${board.writer}</td>
 	 		</tr>
 	 	</c:forEach>
 	 </table>
+	 
+	 <%-- 페이징 처리 시작 --%>
+	<div id="pagination">
+	  <ul class="pagination">
+	    <%--이전 페이지가 없으면 disabled 로 하겠다 --%>
+	    <li class="page-item <c:if test="${!(pageMaker.prev)}">disabled</c:if>">
+	      <a class="page-link" href="<%=request.getContextPath() %>/bbs/list?page=${pageMaker.startPage-1}">Prev</a>
+	    </li>
+	    <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="i">
+	      <li class="page-item <c:if test="${pageMaker.criteria.page == i}">active</c:if>">
+	        <a class="page-link" href="<%=request.getContextPath() %>/bbs/list?page=${i}"> ${i} </a>
+	      </li>
+	    </c:forEach>
+	    <li class="page-item <c:if test="${!(pageMaker.next)}">disabled</c:if>">
+	      <a class="page-link" href="<%=request.getContextPath() %>/bbs/list?page=${pageMaker.endPage+1}">Next</a>
+	    </li>
+	  </ul>  
+	</div>
+	<%-- 페이징 처리 끝 --%>
+
 	 <a href="<%=request.getContextPath()%>/bbs/register">
 	 	<button class="btn btn-outline-primary">등록</button>
 	 </a>

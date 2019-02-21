@@ -1,6 +1,6 @@
 package kr.green.springtest;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -11,6 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import kr.green.springtest.pagenation.Criteria;
+import kr.green.springtest.pagenation.PageMaker;
 import kr.green.springtest.service.BoardService;
 import kr.green.springtest.vo.AccountVo;
 import kr.green.springtest.vo.BoardVo;
@@ -21,9 +23,15 @@ public class BoardController {
 	BoardService boardService;
 	
 	@RequestMapping(value="/bbs/list")
-	public String list(Model model) {
-		List<BoardVo> list = boardService.getBoards();
+	public String list(Model model,HttpServletRequest request, Criteria cri) {
+		//List<BoardVo> list = boardService.getBoards();
+	  
+    /*페이징처리*/
+    PageMaker pageMaker = boardService.getPageMaker(cri,5);
+    ArrayList list = (ArrayList)boardService.getUsers(cri);
+    model.addAttribute("cri",cri);
 		model.addAttribute("list",list);
+		model.addAttribute("pageMaker",pageMaker);
 		return "bbs/list";
 	}
 	
@@ -37,7 +45,7 @@ public class BoardController {
 		return "redirect:/bbs/list";
 	}
 	@RequestMapping(value="/bbs/detail", method=RequestMethod.GET)
-	public String detailGet(Model model, Integer id) { //id타입을 Integer로 해도 상관없음
+	public String detailGet(Model model, Integer id, int page) { //id타입을 Integer로 해도 상관없음
 		//1. 전달받은 id값을 콘솔에 출력
 		//System.out.println(id);
 		//2. 서비스에서 id값을 이용하여 해당 게시글을 가져오는 메소드 호출
@@ -47,6 +55,7 @@ public class BoardController {
 			return "redirect:/bbs/list";
 		//3. 해당게시글을 jsp로 전달
 		model.addAttribute("board",board);
+		model.addAttribute("page",page);
 		return "bbs/detail";
 	}
 	
