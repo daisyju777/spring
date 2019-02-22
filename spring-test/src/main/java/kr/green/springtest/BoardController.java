@@ -1,6 +1,6 @@
 package kr.green.springtest;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -22,13 +22,14 @@ public class BoardController {
 	@Autowired
 	BoardService boardService;
 	
-	@RequestMapping(value="/bbs/list")
+	@RequestMapping(value="/bbs/list", method=RequestMethod.GET)
 	public String list(Model model,HttpServletRequest request, Criteria cri) {
 		//List<BoardVo> list = boardService.getBoards();
 	  
     /*페이징처리*/
     PageMaker pageMaker = boardService.getPageMaker(cri,5);
-    ArrayList list = (ArrayList)boardService.getUsers(cri);
+    List<BoardVo> list = boardService.getUsers(cri);
+    //System.out.println("page:"+pageMaker.criteria.getPage());
     model.addAttribute("cri",cri);
 		model.addAttribute("list",list);
 		model.addAttribute("pageMaker",pageMaker);
