@@ -1,7 +1,10 @@
 package com.spring.dbtest.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import com.spring.dbtest.pagenation.Criteria;
+import com.spring.dbtest.pagenation.PageMaker;
 import com.spring.dbtest.vo.UserVo;
 
 public interface UserService {
@@ -15,5 +18,9 @@ public interface UserService {
   public void userUpdate(String id, String pwd);
 
   public void userDelete(String id, String pwd);
+
+  public PageMaker getPageMaker(Criteria cri, int i);
+
+  public List<UserVo> getUsers(Criteria cri);
      
 }

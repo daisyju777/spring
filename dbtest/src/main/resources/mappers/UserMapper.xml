@@ -23,4 +23,33 @@
   	<delete id="userDelete">
   		delete from dbtest where id=#{id} and pwd=#{pwd};
   	</delete>
+  	
+  	<select id="getCountUserLists" resultType="int"> <!-- 페이징처리시필요.(전체개수) -->
+  	<!--조건에 만족하는 데이터가 없으면 전체건수를 다가져옴  -->
+      select count(idx) from dbtest
+      <if test="cri.type==0">   <!-- 아이디로 검색 -->
+        where id like concat('%', #{cri.search}, '%')
+      </if>
+      <if test="cri.type==1">	<!-- 비밀번호로 검색 -->
+        where pwd like concat('%', #{cri.search}, '%')
+      </if>
+      <if test="cri.type==2"> <!-- 고유번호로 검색 -->
+        where idx like concat('%', #{cri.search}, '%');
+      </if>
+      ;
+    </select>
+  
+    <select id="getUserLists" resultType="com.spring.dbtest.vo.UserVo"> <!-- 페이징처리시필요. -->
+      select * from dbtest
+ 	  <if test="cri.type==0">   <!-- 아이디 검색 -->
+        where id like concat('%', #{cri.search}, '%')
+      </if>
+      <if test="cri.type==1">  <!--비밀번호로 검색  -->
+        where pwd like concat('%', #{cri.search}, '%')
+      </if>
+      <if test="cri.type==2"> <!-- 고유번호로 검색 -->
+        where idx like concat('%', #{cri.search}, '%')
+      </if>
+        order by idx desc limit #{cri.startPage},#{cri.perPagenum};
+    </select>
 </mapper>

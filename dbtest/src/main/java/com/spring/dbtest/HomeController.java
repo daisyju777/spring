@@ -1,6 +1,9 @@
 package com.spring.dbtest;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,6 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.spring.dbtest.pagenation.Criteria;
+import com.spring.dbtest.pagenation.PageMaker;
 import com.spring.dbtest.service.UserService;
 import com.spring.dbtest.vo.UserVo;
 
@@ -30,14 +35,24 @@ public class HomeController {
 	    model.addAttribute("id",id);
 	    model.addAttribute("pwd",pwd);
 	    
-	    // return "home";
-	    return "redirect:/";
+	    /* return "redirect:/"; */
+	    return "home";
 	  }
 	 
 	 @RequestMapping(value="/list", method=RequestMethod.GET)
-	 public String listGet(Model model, UserVo userVo) {
-	   List<UserVo> getList =  userService.getListView(userVo);
-	   model.addAttribute("list",getList);
+	 //public String listGet(Model model, UserVo userVo) {
+	 public String listGet(Model model, HttpServletRequest request, Criteria cri) {
+	   //List<UserVo> getList =  userService.getListView(userVo);
+	   //model.addAttribute("list",getList);
+	   
+	   /*페이징처리*/
+	   PageMaker pageMaker = userService.getPageMaker(cri,5);
+	   List<UserVo> list = userService.getUsers(cri);
+	   model.addAttribute("cri",cri);
+	   model.addAttribute("list",list);
+	   model.addAttribute("pageMaker",pageMaker);
+	   
+	   
 	   return "list";
 	 }
 	 
