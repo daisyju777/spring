@@ -58,7 +58,7 @@ hr {
 	 	<c:forEach items="${list}" var="board">  <!-- list에서 하나씩 꺼내서 board에 저장해서 사용함 -->
 	 		<tr>
 	 			<td>${board.id}</td>
-	 			<td><a href="<%=request.getContextPath()%>/bbs/detail?id=${board.id}&page=${pageMaker.criteria.page}">${board.title}</a></td>
+	 			<td><a href="<%=request.getContextPath()%>/bbs/detail?id=${board.id}&page=${pageMaker.criteria.page}&search=${pageMaker.criteria.search}&type=${pageMaker.criteria.type}">${board.title}</a></td>
 	 			<td>${board.writer}</td>
 	 		</tr>
 	 	</c:forEach>
@@ -71,10 +71,10 @@ hr {
 	      <!--사이즈가 1이므로 콤보상자 -->
 	      <select name="type" size="1" class="form-control" style="display:inline-block; width:105px">
 	      <!--0이면 아이디로 검색함-->
-	      	<option value="0" <c:if test="${pageMaker.criteria.type==0}">selected</c:if>>글번호</option>
-	      	<option value="1" <c:if test="${pageMaker.criteria.type==1}">selected</c:if>>제목</option>
-	      	<option value="2" <c:if test="${pageMaker.criteria.type==2}">selected</c:if>>내용</option>
-	        <option value="3" <c:if test="${pageMaker.criteria.type==3}">selected</c:if>>글쓴이</option>
+	      	<option value="0" <c:if test="${pageMaker.criteria.type==0}">selected</c:if>>제목</option>
+	      	<option value="1" <c:if test="${pageMaker.criteria.type==1}">selected</c:if>>내용</option>
+	        <option value="2" <c:if test="${pageMaker.criteria.type==2}">selected</c:if>>글쓴이</option>
+	        <option value="3" <c:if test="${pageMaker.criteria.type==3}">selected</c:if>>글번호</option>
 	      </select>
 	      <!-- pageMaker.criteria.search 값이 자동으로 model에 들어감. 그러므로 따로 컨트롤러에서 매개변수를 지정하여 받지 않아도됨-->
 	      <input type="text" value="${pageMaker.criteria.search}" name="search" placeholder="Search" class="form-control" style="display:inline-block; width:400px"> 

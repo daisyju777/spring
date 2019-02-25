@@ -46,7 +46,7 @@ public class BoardController {
 		return "redirect:/bbs/list";
 	}
 	@RequestMapping(value="/bbs/detail", method=RequestMethod.GET)
-	public String detailGet(Model model, Integer id, int page) { //id타입을 Integer로 해도 상관없음
+	public String detailGet(Model model, Integer id, Criteria cri) { //id타입을 Integer로 해도 상관없음
 		//1. 전달받은 id값을 콘솔에 출력
 		//System.out.println(id);
 		//2. 서비스에서 id값을 이용하여 해당 게시글을 가져오는 메소드 호출
@@ -56,7 +56,7 @@ public class BoardController {
 			return "redirect:/bbs/list";
 		//3. 해당게시글을 jsp로 전달
 		model.addAttribute("board",board);
-		model.addAttribute("page",page);
+		model.addAttribute("cri",cri);
 		return "bbs/detail";
 	}
 	

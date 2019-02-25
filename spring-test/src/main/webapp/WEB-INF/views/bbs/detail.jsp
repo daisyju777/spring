@@ -22,7 +22,7 @@
 	<label for="content">내용:</label>
 	<textarea class="form-control" id="content" name="content" readonly>${board.content}</textarea>
 
-	<a href="<%=request.getContextPath() %>/bbs/list?page=${page}">
+	<a href="<%=request.getContextPath() %>/bbs/list?page=${cri.page}&search=${cri.search}&type=${cri.type}">
 		<button class="btn btn-outline-primary registerbtn">목록</button>
 	</a>
 	<c:if test="${user.id == board.writer}">

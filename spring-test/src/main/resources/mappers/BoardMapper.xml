@@ -26,34 +26,34 @@
 	
 	<select id="getCountUserLists" resultType="int"> <!-- 페이징처리시필요.(전체개수) -->
       select count(id) from board
-      <if test="cri.type==0">   <!--글번호로 검색 -->
-        where id = #{cri.search}
-      </if>
-      <if test="cri.type==1">	<!-- 제목으로 검색 -->
+      <if test="cri.type==0">   <!--제목으로 검색 -->
         where title like concat('%', #{cri.search}, '%')
       </if>
-      <if test="cri.type==2"> <!-- 내용으로 검색 -->
+      <if test="cri.type==1">	<!-- 내용으로 검색 -->
         where content like concat('%', #{cri.search}, '%')
       </if>
-      <if test="cri.type==3"> <!-- 글쓴이로 검색 -->
+      <if test="cri.type==2"> <!-- 글쓴이로 검색 -->
         where writer = #{cri.search}
+      </if>
+      <if test="cri.type==3"> <!-- 글번호로 검색 -->
+        where id = #{cri.search}
       </if>
       ;
     </select>
   
     <select id="getUserLists" resultType="kr.green.springtest.vo.BoardVo"> <!-- 페이징처리시필요. -->
       select * from board
-      <if test="cri.type==0">   <!--글번호로 검색 -->
-        where id = #{cri.search}
-      </if>
-      <if test="cri.type==1">	<!-- 제목으로 검색 -->
+      <if test="cri.type==0">   <!--제목으로 검색 -->
         where title like concat('%', #{cri.search}, '%')
       </if>
-      <if test="cri.type==2"> <!-- 내용으로 검색 -->
+      <if test="cri.type==1">	<!-- 내용으로 검색 -->
         where content like concat('%', #{cri.search}, '%')
       </if>
-      <if test="cri.type==3"> <!-- 글쓴이로 검색 -->
+      <if test="cri.type==2"> <!-- 글쓴이로 검색 -->
         where writer = #{cri.search}
+      </if>
+      <if test="cri.type==3"> <!-- 글번호로 검색 -->
+        where id = #{cri.search}
       </if>
         order by id desc limit #{cri.startPage},#{cri.perPagenum};
     </select>
