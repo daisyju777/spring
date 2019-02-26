@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.myweb.dao.AccountDao">
+	<select id="getAccount" resultType="com.spring.myweb.vo.AccountVo">
+		select * from account 
+			where id=#{id}
+	</select>
+	<insert id="setAccount">
+		insert into account(id, pw, email, gender)
+		values(#{user.id},#{user.pw},#{user.email},#{user.gender})
+	</insert>
+</mapper>
