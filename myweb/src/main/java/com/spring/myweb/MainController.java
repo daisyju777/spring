@@ -3,6 +3,9 @@ package com.spring.myweb;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,6 +29,12 @@ public class MainController {
 		return "home";
 	}
 	
+	 @RequestMapping(value = "/hottopics", method = RequestMethod.GET)
+	  public String hottopics(Model model) {
+	    
+	    return "hottopics";
+	  }
+	 
 	 @RequestMapping(value = "/bbs/list", method = RequestMethod.GET)
 	  public String talk(Model model) {
 	    
@@ -62,9 +71,20 @@ public class MainController {
 	   @RequestMapping(value = "/login", method = RequestMethod.POST)
 	   public String homePost(Model model, AccountVo loginInfo) {
 	     AccountVo user = accountService.signin(loginInfo); //accountService.signin(loginInfo)는 결과로 객체정보를 전달해줌
-	     model.addAttribute("user",user);
-	     return "redirect:/login";
+	     if(user != null) {
+         model.addAttribute("user",user);
+	       return "redirect:/";
+	     } else {
+	       return "redirect:/login";
+	     }
+	   
 	   }
 	 
+	   @RequestMapping(value = "/signout", method = RequestMethod.GET)
+	   public String signoutGet(Model model,HttpServletRequest request) {
+	     HttpSession session = request.getSession();
+	     session.removeAttribute("user"); //세션에서  사용자 정보 제거
+	     return "redirect:/";
+	   }
 
 }

@@ -7,7 +7,7 @@
             <ul class="nav navbar-nav mynavbarul">
               <li class="dropdown mylist"><a class="dropdown-toggle" data-toggle="dropdown" href="#">HEALTH<span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Hot Topics</a></li>
+                  <li><a href="<%=request.getContextPath()%>/hottopics">Hot Topics</a></li>
                   <li><a href="#">Anti-aging</a></li>
                   <li><a href="#">Brain</a></li>
                   <li><a href="#">Detox</a></li>
@@ -54,9 +54,20 @@
                </div>
              </div>
            </form>
-           <ul class="nav navbar-nav navbar-right mynavbarright">
-             <li><a href="<%=request.getContextPath()%>/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-             <li><a href="<%=request.getContextPath()%>/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+           <ul class="nav navbar-nav navbar-right mynavbarright">	 
+             <li><a href="<%=request.getContextPath()%>/signup" style="<c:if test="${user != null}">display:none;</c:if>"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+             <li>
+	             <c:if test="${user != null}">
+	             	<a href="<%=request.getContextPath()%>/signout"><span class="glyphicon glyphicon-log-in"></span> 
+	             		Logout
+	             	</a>
+	             </c:if>
+	             <c:if test="${user == null}">
+	             	<a href="<%=request.getContextPath()%>/login"><span class="glyphicon glyphicon-log-in"></span> 
+	             		Login
+	             	</a>
+	             </c:if>
+             </li>
            </ul>
          </div>
       </nav>

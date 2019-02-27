@@ -21,7 +21,7 @@ public class AccountServiceImp implements AccountService {
     //DB에서 검색이 안되면 user값에 null이 들어감
     //그러므로 아래 조건에 user != null 를 추가해줘야지 비회원이 로그인을 한경우 오류창이 안뜨고 다시 로그인화면으로 돌아옴
     if(user != null && passwordEncoder.matches(loginInfo.getPw(), user.getPw()))
-      return user; //내가 바꾼부분!!
+      return user; 
     return null;
   }
 

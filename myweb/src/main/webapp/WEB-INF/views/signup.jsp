@@ -1,10 +1,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<!DOCTYPE html>
 <html>
 <head>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/header.css">
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/signup.css">
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/signup.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <title>HealthCare | Health and Fitness News, Recipes, Natural Remedies </title>
@@ -13,20 +14,20 @@
 <%@ include file="header.jsp" %>
 <br><br>
 	<form method="post" action="<%=request.getContextPath()%>/signup" id="form" class="mysignupform">
-		<div id="mysignupcontainer">
+		<div class="mysignupcontainer">
 			<h1>회원가입</h1>
 			<p>회원 정보를 입력해주세요.</p>
 	    	<hr>
 			
 			<label for="id">ID</label>
-			<input type="text" placeholder="아이디를 입력해주세요" name="id" id="id" class="form-control" required>
-			<button id="dup" type="button" class="btn btn-primary btn-sm">중복체크</button>
+			<input type="text" placeholder="아이디를 입력해주세요" name="id" id="id" required>
+			<button id="dup" type="button" class="btn btn-info btn-sm">중복체크</button>
 			
 			<label for="pw">Password</label>
-			<input type="password" placeholder="비밀번호를 입력해주세요" name="pw" id="pw" class="form-control" required>
+			<input type="password" placeholder="비밀번호를 입력해주세요" name="pw" id="pw" required>
 			
 			<label for="email">Email</label>
-			<input type="email" placeholder="이메일을 입력해주세요" name="email" id="email" class="form-control" required>
+			<input type="email" placeholder="이메일을 입력해주세요" name="email" id="email" required>
 			
 			<label>성별</label>
 			<input type="radio" value="male" name="gender" id="male" checked>
@@ -34,7 +35,7 @@
 			<input type="radio" value="male" name="gender" id="female" checked>
 			<label for="female">여성</label>
 	
-			<button type="button" id="btnOk" class="btn btn-outline-secondary clearfix">회원가입</button>
+			<button type="button" id="btnOk">회원가입</button>
 		</div>
 	</form>
 	<script>

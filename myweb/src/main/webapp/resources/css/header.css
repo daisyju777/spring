@@ -75,10 +75,6 @@ font-size: 15px;
     color:rgb(59, 89, 128);
 }
 
-.myimg{
-    width: 100%;
-}
-
 
 @media (max-width : 1440px){
     .mynavheader>a{
