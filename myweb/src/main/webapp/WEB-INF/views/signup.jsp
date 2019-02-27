@@ -32,7 +32,7 @@
 			<label>성별</label>
 			<input type="radio" value="male" name="gender" id="male" checked>
 			<label for="male">남성</label>
-			<input type="radio" value="male" name="gender" id="female" checked>
+			<input type="radio" value="female" name="gender" id="female">
 			<label for="female">여성</label>
 	
 			<button type="button" id="btnOk">회원가입</button>

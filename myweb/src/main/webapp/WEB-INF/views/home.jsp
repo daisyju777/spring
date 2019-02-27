@@ -11,6 +11,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <title>HealthCare | Health and Fitness News, Recipes, Natural Remedies </title>
+    <style>
+    img{
+      width:100%;
+    }
+    </style>
 </head>
 <body>
 <%@ include file="header.jsp" %>

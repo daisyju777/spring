@@ -35,11 +35,6 @@ public class MainController {
 	    return "hottopics";
 	  }
 	 
-	 @RequestMapping(value = "/bbs/list", method = RequestMethod.GET)
-	  public String talk(Model model) {
-	    
-	    return "bbs/list";
-	  }
 	
 	  @RequestMapping(value = "/signup", method = RequestMethod.GET)
 	  public String signupGet(Model model) {

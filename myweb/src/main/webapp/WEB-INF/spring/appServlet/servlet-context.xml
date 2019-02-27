@@ -25,10 +25,26 @@
 	
 	<beans:bean id="loginInterceptor" 
 	class="com.spring.myweb.interceptor.LoginInterceptor"></beans:bean>
+	<beans:bean id="unauthInterceptor" 
+	class="com.spring.myweb.interceptor.UnauthInterceptor"></beans:bean>
+	<beans:bean id="authInterceptor" 
+	class="com.spring.myweb.interceptor.AuthInterceptor"></beans:bean>
+	
 	<interceptors>
 		<interceptor>
 			<mapping path="/login"/>
 			<beans:ref bean="loginInterceptor"/>
+		</interceptor>
+		<interceptor>
+			<mapping path="/login"/>
+			<mapping path="/signup"/>
+			<beans:ref bean="unauthInterceptor"/>
+		</interceptor>
+		<interceptor>
+			<mapping path="/bbs/register"/>
+			<mapping path="/bbs/delete"/>
+			<mapping path="/bbs/modify"/>
+			<beans:ref bean="authInterceptor"/>
 		</interceptor>
 	</interceptors>
 	
