@@ -22,6 +22,7 @@ import com.spring.myweb.vo.AccountVo;
 public class MainController {
   @Autowired
   AccountService accountService;
+
   
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Model model) {
@@ -29,12 +30,6 @@ public class MainController {
 		return "home";
 	}
 	
-	 @RequestMapping(value = "/hottopics", method = RequestMethod.GET)
-	  public String hottopics(Model model) {
-	    
-	    return "hottopics";
-	  }
-	 
 	
 	  @RequestMapping(value = "/signup", method = RequestMethod.GET)
 	  public String signupGet(Model model) {
@@ -81,5 +76,4 @@ public class MainController {
 	     session.removeAttribute("user"); //세션에서  사용자 정보 제거
 	     return "redirect:/";
 	   }
-
 }

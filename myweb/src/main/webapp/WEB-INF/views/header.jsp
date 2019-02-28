@@ -7,7 +7,7 @@
             <ul class="nav navbar-nav mynavbarul">
               <li class="dropdown mylist"><a class="dropdown-toggle" data-toggle="dropdown" href="#">HEALTH<span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                  <li><a href="<%=request.getContextPath()%>/hottopics">Hot Topics</a></li>
+                  <li><a href="<%=request.getContextPath()%>/health/hottopics">Hot Topics</a></li>
                   <li><a href="#">Anti-aging</a></li>
                   <li><a href="#">Brain</a></li>
                   <li><a href="#">Detox</a></li>
