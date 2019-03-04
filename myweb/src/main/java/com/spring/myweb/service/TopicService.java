@@ -12,4 +12,6 @@ public interface TopicService {
 
   public TopicVo detailTopics(Integer id);
 
+  public void modifyTopics(TopicVo topic);
+
 }

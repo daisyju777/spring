@@ -14,4 +14,6 @@ public interface TopicDao {
 
   public TopicVo detailTopics(@Param("id") Integer id);
 
+  public void updateTopics(@Param("topic") TopicVo topic);
+
 }

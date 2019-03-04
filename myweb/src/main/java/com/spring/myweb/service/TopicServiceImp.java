@@ -30,4 +30,12 @@ public class TopicServiceImp implements TopicService {
      return topicdao.detailTopics(id);
   }
 
+  @Override
+  public void modifyTopics(TopicVo topic) {
+    TopicVo oriTopic = topicdao.detailTopics(topic.getId());
+    topic.setState(oriTopic.getState());
+    if (topic.getFile()==null) topic.setFile(oriTopic.getFile());  //수정할때 다시 따로 파일지정을 안해주면 기존에 있던 파일을 불러옴
+    topicdao.updateTopics(topic);
+  }
+
 }

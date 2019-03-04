@@ -16,4 +16,12 @@
 	<select id="detailTopics" resultType="com.spring.myweb.vo.TopicVo">
 		select * from hottopics where id = #{id} and state = 'I'
 	</select>
+	<update id="updateTopics">
+		update hottopics
+			set title= #{topic.title},
+				content=#{topic.content},
+				state = #{topic.state},
+				file = #{topic.file}
+			where id = #{topic.id}
+	</update>
 </mapper>

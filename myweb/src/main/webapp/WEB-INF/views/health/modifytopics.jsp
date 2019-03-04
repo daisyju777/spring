@@ -15,25 +15,24 @@
 </head>
 <body>
 <%@ include file="../header.jsp" %>
- <div class="box">
-	 <div class="left-box">
-		<h1 class="newstitle">
-			<scan style="color:rgb(217,83,79);">HOT</scan> TOPICS
-			<a href="#"><button class="btn btn-primary btn-sm mynewsbutton">삭제</button></a>
-			<a href="<%=request.getContextPath()%>/health/modifytopics?id=${topic.id}"><button class="btn btn-primary btn-sm mynewsbutton">수정</button></a>
-			<a href="<%=request.getContextPath()%>/health/hottopics"><button class="btn btn-primary btn-sm mynewsbutton">목록</button></a>
-		</h1>
-		<div class="newsbox">
-			<h2>${topic.title}</h2>
-			<img src="<%=request.getContextPath()%>/resources/img${topic.file}" class="detailnewsimg">
-			<div>
-				${topic.content}
-			</div>
-		</div>
+<form action="<%=request.getContextPath()%>/health/modifytopics" method="post" enctype="multipart/form-data">
+	<div class="container">
+	 <h1>글수정하기</h1>
+     <hr>
+     	<input type="hidden" value="${topic.id}" name="id">
+     	
+		<label for="title">제목:</label>
+		<input type="text" class="form-control" id="title" name="title" value="${topic.title}" required>
+	
+		<label for="content">내용:</label>
+		<textarea class="form-control" id="content" name="content" required >${topic.content}</textarea>
+		
+		<label for="title">파일:</label>
+		<input type="file" class="form-control" id="file" name="files">
+		<br>
+		<button class="btn btn-outline-primary registerbtn">등록</button>
 	</div>
-	<div class="right-box">
-		<img src="<%=request.getContextPath()%>/resources/img/ads.jpg">
-	</div>
- </div>
+</form>
+
 </body>
 </html>

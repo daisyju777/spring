@@ -27,6 +27,7 @@ public class TopicVo {
   public String getFile() {
     return file;
   }
+  
   public void setFile(String file) {
     this.file = file;
   }
