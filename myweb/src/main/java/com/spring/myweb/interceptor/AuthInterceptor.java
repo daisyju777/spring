@@ -21,5 +21,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
       return false; //return true이면 이전에 가려던 경로(컨트롤러에 정해준 경로)로 다시 가게됨
     }
     return true;
+    
+    
   }
 }

@@ -30,8 +30,13 @@
 		<label for="pw"><b>Password</b></label>
 		<input type="password" placeholder="비밀번호를 입력해주세요" name="pw" class="mypassword" required><br>
 		<button class="btn btn-primary">로그인</button>
-<%-- 	    <c:if test="${user == null}"><scan>회원정보가 존재하지 않습니다.</scan></c:if> --%>
+	 	<c:if test="${check == 1}"><scan>회원정보가 존재하지 않습니다.</scan></c:if>	
 	</div>
 </form>
+<!-- <script>
+	$(document).ready(function(){
+		if($('.mytext').val() == null && $('.mypassword').val() == null) $('scan').css('display','none');
+	});
+</script> -->
 </body>
 </html>

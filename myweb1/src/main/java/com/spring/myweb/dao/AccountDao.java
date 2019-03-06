@@ -1,0 +1,11 @@
+package com.spring.myweb.dao;
+
+import org.apache.ibatis.annotations.Param;
+
+import com.spring.myweb.vo.AccountVo;
+
+public interface AccountDao {
+  public AccountVo getAccount(@Param("id")String id);
+
+  public void setAccount(@Param("user")AccountVo userInfo);
+}

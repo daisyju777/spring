@@ -1,6 +1,7 @@
 package com.spring.myweb;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,13 +16,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.spring.myweb.service.AccountService;
+import com.spring.myweb.service.TopicService;
 import com.spring.myweb.vo.AccountVo;
+import com.spring.myweb.vo.TopicVo;
 
 
 @Controller
 public class MainController {
   @Autowired
   AccountService accountService;
+  
+  @Autowired
+  TopicService topicservice;
 
   
 	@RequestMapping(value = "/", method = RequestMethod.GET)
@@ -55,7 +61,8 @@ public class MainController {
 	  
 	   @RequestMapping(value = "/login", method = RequestMethod.GET)
 	    public String loginGet(Model model) {
-	      return "login";
+
+       return "login";
 	    }
 	   
 	   @RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -63,7 +70,7 @@ public class MainController {
 	     AccountVo user = accountService.signin(loginInfo); //accountService.signin(loginInfo)는 결과로 객체정보를 전달해줌
 	     if(user != null) {
          model.addAttribute("user",user);
-	       return "redirect:/";
+         return "redirect:/";
 	     } else {
 	       return "redirect:/login";
 	     }
@@ -76,4 +83,23 @@ public class MainController {
 	     session.removeAttribute("user"); //세션에서  사용자 정보 제거
 	     return "redirect:/";
 	   }
+	   
+	   @RequestMapping(value = "/health/hottopics", method = RequestMethod.GET)
+	   public String hottopics(Model model) {
+	     List<TopicVo> list = topicservice.getTopics();
+	     model.addAttribute("list", list);
+	     return "health/hottopics";
+	   }
+	   
+	   
+	   @RequestMapping(value = "/health/detailtopics", method = RequestMethod.GET)
+	   public String detailtopicsGet(Model model,Integer id) {
+	    TopicVo topic = topicservice.detailTopics(id);
+	    if(topic==null)  //(직접 URI를 입력하는 등의)잘못된 경로로 접근했을때는 null값이 반환되므로 이때는 게시글목록으로 보내줌
+	      return "redirect:/health/hottopics";
+	    model.addAttribute("topic",topic);
+	    //System.out.println(topic.getFile());
+	    return "health/detailtopics";
+	   }
+	   
 }

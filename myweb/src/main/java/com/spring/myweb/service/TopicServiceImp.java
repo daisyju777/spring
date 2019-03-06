@@ -38,4 +38,11 @@ public class TopicServiceImp implements TopicService {
     topicdao.updateTopics(topic);
   }
 
+  @Override
+  public void deleteTopics(Integer id) {
+    TopicVo topic = topicdao.detailTopics(id);
+    topic.setState("D");
+    topicdao.updateTopics(topic);
+  }
+
 }

@@ -14,4 +14,6 @@ public interface TopicService {
 
   public void modifyTopics(TopicVo topic);
 
+  public void deleteTopics(Integer id);
+
 }

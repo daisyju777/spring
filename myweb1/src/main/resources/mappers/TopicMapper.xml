@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.myweb.dao.TopicDao">
+	<insert id="setTopics">
+		insert into hottopics(title, content, file)
+		values(#{topic.title},#{topic.content},#{topic.file})
+	</insert>
+	<select id="getTopics" resultType="com.spring.myweb.vo.TopicVo">
+		select * 
+			from hottopics
+			where state = 'I'
+			order by id desc
+	</select>
+	<select id="detailTopics" resultType="com.spring.myweb.vo.TopicVo">
+		select * from hottopics where id = #{id} and state = 'I'
+	</select>
+	<update id="updateTopics">
+		update hottopics
+			set title= #{topic.title},
+				content=#{topic.content},
+				state = #{topic.state},
+				file = #{topic.file}
+			where id = #{topic.id}
+	</update>
+</mapper>

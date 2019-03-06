@@ -19,8 +19,6 @@
 	 <div class="left-box">
 		<h1 class="newstitle">
 			<scan style="color:rgb(217,83,79);">HOT</scan> TOPICS
-			<a href="#"><button class="btn btn-primary btn-sm mynewsbutton">삭제</button></a>
-			<a href="<%=request.getContextPath()%>/health/modifytopics?id=${topic.id}"><button class="btn btn-primary btn-sm mynewsbutton">수정</button></a>
 			<a href="<%=request.getContextPath()%>/health/hottopics"><button class="btn btn-primary btn-sm mynewsbutton">목록</button></a>
 		</h1>
 		<div class="newsbox">

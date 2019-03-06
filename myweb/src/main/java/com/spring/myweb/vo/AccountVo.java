@@ -9,6 +9,15 @@ public class AccountVo {
   private String gender;
   private Date registed_date;
   private String authorty;
+  private String idImsi;
+  
+  public String getIdImsi() {
+    return idImsi;
+  }
+  public void setIdImsi(String idImsi) {
+    this.idImsi = idImsi;
+  }
+  
   public String getId() {
     return id;
   }
@@ -45,10 +54,12 @@ public class AccountVo {
   public void setAuthorty(String authorty) {
     this.authorty = authorty;
   }
+  
   @Override
   public String toString() {
     return "AccountVo [id=" + id + ", pw=" + pw + ", email=" + email + ", gender=" + gender + ", registed_date="
-        + registed_date + ", authorty=" + authorty + "]";
+        + registed_date + ", authorty=" + authorty + ", idImsi=" + idImsi + "]";
   }
+  
   
 }

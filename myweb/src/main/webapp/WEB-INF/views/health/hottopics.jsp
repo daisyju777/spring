@@ -19,7 +19,6 @@
 	 <div class="left-box">
 		<h1 class="newstitle">
 			<scan style="color:rgb(217,83,79);">HOT</scan> TOPICS
-			<a href="<%=request.getContextPath()%>/health/addtopics"><button class="btn btn-primary btn-sm" style="float:right">글작성하기</button></a>
 		</h1>
 		<c:forEach var="list" items="${list}">
 			<div class="newsbox">
