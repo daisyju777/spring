@@ -8,7 +8,7 @@
 <body>
 <div>메뉴</div>
 <div><a href="right" target="right">홈으로</a></div>
-<div><a href="health/list" target="right">Hot Topics</a></div>
+<div><a href="health/hottopics/list" target="right">Hot Topics</a></div>
 <div><a href="#" target="right">Anti-aging</a></div>
 <div><a href="#" target="right">Brain</a></div>
 <div><a href="#" target="right">Detox</a></div>
@@ -22,7 +22,7 @@
 
 <div><a href="#" target="right">Yoga</a></div>
 <div><a href="#" target="right">Meditation</a></div>
-<div><a href="#" target="right">Fitness videos</a></div>
+<div><a href="fitness/videos/list" target="right">Fitness videos</a></div>
 
 
 </body>

@@ -102,4 +102,21 @@ public class MainController {
 	    return "health/detailtopics";
 	   }
 	   
+     @RequestMapping(value = "/fitness/videos", method = RequestMethod.GET)
+     public String videos(Model model) {
+       List<TopicVo> list = topicservice.getVideos();
+       model.addAttribute("list", list);
+       return "fitness/videos";
+     }
+	   
+     @RequestMapping(value = "/fitness/detailvideos", method = RequestMethod.GET)
+     public String detailvideosGet(Model model,Integer id) {
+      TopicVo topic = topicservice.detailVideos(id);
+      if(topic==null)  //(직접 URI를 입력하는 등의)잘못된 경로로 접근했을때는 null값이 반환되므로 이때는 게시글목록으로 보내줌
+        return "redirect:/fitness/videos";
+      model.addAttribute("topic",topic);
+      //System.out.println(topic.getFile());
+      return "fitness/detailvideos";
+     }
+     
 }

@@ -30,7 +30,7 @@
                 <ul class="dropdown-menu">
                   <li><a href="#">Yoga</a></li>
                   <li><a href="#">Meditation</a></li>
-                  <li><a href="#">Fitness videos</a></li>
+                  <li><a href="<%=request.getContextPath()%>/fitness/videos">Fitness videos</a></li>
                 </ul>
               </li>
               <li class="dropdown mylist"><a class="dropdown-toggle" data-toggle="dropdown" href="#">STORE<span class="caret"></span></a>

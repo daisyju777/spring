@@ -16,4 +16,12 @@ public interface TopicDao {
 
   public void updateTopics(@Param("topic") TopicVo topic);
 
+  public List<TopicVo> getVideos();
+
+  public void setVideos(@Param("topic") TopicVo topics);
+
+  public TopicVo detailVideos(@Param("id") Integer id);
+
+  public void updateVideos(@Param("topic") TopicVo topic);
+
 }

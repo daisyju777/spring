@@ -16,4 +16,14 @@ public interface TopicService {
 
   public void deleteTopics(Integer id);
 
+  public List<TopicVo> getVideos();
+
+  public void addVideos(TopicVo topics);
+
+  public TopicVo detailVideos(Integer id);
+
+  public void modifyVideos(TopicVo topic);
+
+  public void deleteVideos(Integer id);
+
 }
