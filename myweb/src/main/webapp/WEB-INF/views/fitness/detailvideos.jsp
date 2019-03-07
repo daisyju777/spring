@@ -18,12 +18,12 @@
  <div class="box">
 	 <div class="left-box">
 		<h1 class="newstitle">
-			<scan style="color:rgb(217,83,79);">HOT</scan> TOPICS
+			<scan style="color:rgb(217,83,79);">FITNESS</scan> VIDEOS
 			<a href="<%=request.getContextPath()%>/fitness/videos"><button class="btn btn-primary btn-sm mynewsbutton">목록</button></a>
 		</h1>
 		<div class="newsbox">
 			<h2>${topic.title}</h2>
-			<img src="<%=request.getContextPath()%>/resources/img${topic.file}" class="detailnewsimg">
+			<%-- <img src="<%=request.getContextPath()%>/resources/img${topic.file}" class="detailnewsimg"> --%>
 			<div>
 				${topic.content}
 			</div>

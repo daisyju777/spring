@@ -17,7 +17,7 @@
  <div class="box">
 	 <div class="left-box">
 		<h1 class="newstitle">
-			<scan style="color:rgb(217,83,79);">HOT</scan> TOPICS
+			<scan style="color:rgb(217,83,79);">FITNESS</scan> VIDEOS
 			<a href="<%=request.getContextPath()%>/admin/fitness/videos/register"><button class="btn btn-primary btn-sm" style="float:right">글작성하기</button></a>
 		</h1>
 		<c:forEach var="list" items="${list}">
