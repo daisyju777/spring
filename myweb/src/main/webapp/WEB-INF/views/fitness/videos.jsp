@@ -39,5 +39,10 @@
 		<img src="<%=request.getContextPath()%>/resources/img/ads.jpg">
 	</div>
  </div>
+ <script>
+$(document).ready(function(){
+	  $(".newscontentin>iframe").css('display','none');
+	}); 
+</script>
 </body>
 </html>

@@ -60,18 +60,21 @@ public class MainController {
 	  }
 	  
 	   @RequestMapping(value = "/login", method = RequestMethod.GET)
-	    public String loginGet(Model model) {
-
+	    public String loginGet(Model model, Boolean login, String id) {
+	     model.addAttribute("login",login);
+	     model.addAttribute("id",id);
        return "login";
 	    }
 	   
 	   @RequestMapping(value = "/login", method = RequestMethod.POST)
 	   public String homePost(Model model, AccountVo loginInfo) {
 	     AccountVo user = accountService.signin(loginInfo); //accountService.signin(loginInfo)는 결과로 객체정보를 전달해줌
+       model.addAttribute("user",user);
 	     if(user != null) {
-         model.addAttribute("user",user);
          return "redirect:/";
 	     } else {
+	       model.addAttribute("login",false);
+	       model.addAttribute("id",loginInfo.getId());
 	       return "redirect:/login";
 	     }
 	   

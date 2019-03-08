@@ -25,7 +25,7 @@
 		<div class="newsbox">
 			<h2>${topic.title}</h2>
 			<%-- <img src="<%=request.getContextPath()%>/resources/img${topic.file}" class="detailnewsimg"> --%>
-			<div class="videobox">
+			<div>
 				${topic.content}
 			</div>
 		</div>

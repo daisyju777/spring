@@ -25,18 +25,20 @@
 	<div class="mylogincontainer">
 		<!-- 전달하려는 데이터가 있는 태그의 속성name을 입력한다. -->
 		<label for="id"><b>ID</b></label>
-		<input type="text" placeholder="아이디를 입력해주세요" name="id" class="mytext" required><br>
+		<input type="text" placeholder="아이디를 입력해주세요" name="id" class="mytext" required value="${id}"><br>
 		
 		<label for="pw"><b>Password</b></label>
 		<input type="password" placeholder="비밀번호를 입력해주세요" name="pw" class="mypassword" required><br>
 		<button class="btn btn-primary">로그인</button>
-	 	<c:if test="${check == 1}"><scan>회원정보가 존재하지 않습니다.</scan></c:if>	
+	 	<span style="display:none;">회원정보가 존재하지 않습니다.</span>
+
 	</div>
 </form>
-<!-- <script>
-	$(document).ready(function(){
-		if($('.mytext').val() == null && $('.mypassword').val() == null) $('scan').css('display','none');
-	});
-</script> -->
+<script>
+$(document).ready(function(){
+ 	    if(${user == null} && ${login == false}) $('span').css('display','inline-block');
+	    else $('span').css('display','none');
+});
+</script>
 </body>
 </html>
