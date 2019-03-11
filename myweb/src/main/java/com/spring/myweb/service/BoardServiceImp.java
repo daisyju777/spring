@@ -40,9 +40,10 @@ public class BoardServiceImp implements BoardService{
      * 2.로그인한 유저가 게시판 작성자가 아닌 경우
      * 에는 게시판 삭제 동작이 실행되지 않고 게시판 리스트 페이지로 넘어간다
      */
-    if(board == null||!board.getWriter().equals(user.getId())) return; 
+    if(user.getAuthority().equals("admin")) board.setState("D");
+    else if(board == null||!board.getWriter().equals(user.getId())) return; 
     //조건을 만족하면 메소드를 멈추고 강제종료
-    board.setState("D");
+    else board.setState("D");
     /*boardDao에 updateBoard를 만들어 놓으면 게시판을 삭제할때와 수정할때 모두 쓰일 수 있기 때문에 deleteBoard가 아닌
      * updateBoard로 함
      */

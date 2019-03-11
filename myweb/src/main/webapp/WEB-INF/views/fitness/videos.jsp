@@ -18,7 +18,7 @@
  <div class="box">
 	 <div class="left-box">
 		<h1 class="newstitle">
-			<scan style="color:rgb(217,83,79);">FITNESS</scan> VIDEOS
+			<span style="color:rgb(217,83,79);">FITNESS</span> VIDEOS
 		</h1>
 		<c:forEach var="list" items="${list}">
 			<div class="newsbox">

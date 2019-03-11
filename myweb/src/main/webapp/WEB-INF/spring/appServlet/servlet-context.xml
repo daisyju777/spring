@@ -44,6 +44,7 @@
 			<mapping path="/bbs/register"/>
 			<mapping path="/bbs/delete"/>
 			<mapping path="/bbs/modify"/>
+			<mapping path="/admin/**"/>
 			<beans:ref bean="authInterceptor"/>
 		</interceptor>
 	</interceptors>
