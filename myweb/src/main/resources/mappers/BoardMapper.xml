@@ -27,16 +27,19 @@
 	<select id="getCountUserLists" resultType="int"> <!-- 페이징처리시필요.(전체개수) -->
       select count(id) from board
       <if test="cri.type==0">   <!--제목으로 검색 -->
-        where title like concat('%', #{cri.search}, '%')
+        where title like concat('%', #{cri.search}, '%') and state = 'I'
       </if>
       <if test="cri.type==1">	<!-- 내용으로 검색 -->
-        where content like concat('%', #{cri.search}, '%')
+        where content like concat('%', #{cri.search}, '%') and state = 'I'
       </if>
       <if test="cri.type==2"> <!-- 글쓴이로 검색 -->
-        where writer = #{cri.search}
+        where writer = #{cri.search} and state = 'I'
       </if>
       <if test="cri.type==3"> <!-- 글번호로 검색 -->
-        where id = #{cri.search}
+        where id = #{cri.search} and state = 'I'
+      </if>
+      <if test="cri.type==null">
+      	where state = 'I'
       </if>
       ;
     </select>
@@ -44,16 +47,19 @@
     <select id="getUserLists" resultType="com.spring.myweb.vo.BoardVo"> <!-- 페이징처리시필요. -->
       select * from board
       <if test="cri.type==0">   <!--제목으로 검색 -->
-        where title like concat('%', #{cri.search}, '%')
+        where title like concat('%', #{cri.search}, '%') and state = 'I' 
       </if>
       <if test="cri.type==1">	<!-- 내용으로 검색 -->
-        where content like concat('%', #{cri.search}, '%')
+        where content like concat('%', #{cri.search}, '%') and state = 'I'
       </if>
       <if test="cri.type==2"> <!-- 글쓴이로 검색 -->
-        where writer = #{cri.search}
+        where writer = #{cri.search} and state = 'I'
       </if>
       <if test="cri.type==3"> <!-- 글번호로 검색 -->
-        where id = #{cri.search}
+        where id = #{cri.search} and state = 'I'
+      </if>
+      <if test="cri.type==null">
+      	where state = 'I'
       </if>
         order by id desc limit #{cri.startPage},#{cri.perPagenum};
     </select>

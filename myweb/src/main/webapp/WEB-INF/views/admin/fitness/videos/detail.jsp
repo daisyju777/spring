@@ -18,7 +18,7 @@
 	 <div class="left-box">
 		<h1 class="newstitle">
 			<scan style="color:rgb(217,83,79);">FITNESS</scan> VIDEOS
-			<a href="<%=request.getContextPath()%>/admin/fitness/videos/delete?id=${topic.id}"><button class="btn btn-primary btn-sm mynewsbutton">삭제</button></a>
+			<a href="<%=request.getContextPath()%>/admin/fitness/videos/delete?id=${topic.id}"><button class="btn btn-primary btn-sm mynewsbutton deletebtn">삭제</button></a>
 			<a href="<%=request.getContextPath()%>/admin/fitness/videos/modify?id=${topic.id}"><button class="btn btn-primary btn-sm mynewsbutton">수정</button></a>
 			<a href="<%=request.getContextPath()%>/admin/fitness/videos/list"><button class="btn btn-primary btn-sm mynewsbutton">목록</button></a>
 		</h1>
@@ -31,5 +31,16 @@
 		</div>
 	</div>
  </div>
+<script>
+$(document).ready(function(){
+  $(".deletebtn").click(function(){
+    var msg = confirm("삭제하시겠습니까? ");
+    if (msg == false) {
+      return false;
+    }
+  });
+  $("iframe").css("width",670);
+});
+</script>
 </body>
 </html>

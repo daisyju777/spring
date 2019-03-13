@@ -29,6 +29,8 @@
 	class="com.spring.myweb.interceptor.UnauthInterceptor"></beans:bean>
 	<beans:bean id="authInterceptor" 
 	class="com.spring.myweb.interceptor.AuthInterceptor"></beans:bean>
+	<beans:bean id="adminInterceptor" 
+	class="com.spring.myweb.interceptor.AdminInterceptor"></beans:bean>
 	
 	<interceptors>
 		<interceptor>
@@ -44,8 +46,11 @@
 			<mapping path="/bbs/register"/>
 			<mapping path="/bbs/delete"/>
 			<mapping path="/bbs/modify"/>
-			<mapping path="/admin/**"/>
 			<beans:ref bean="authInterceptor"/>
+		</interceptor>
+		<interceptor>
+			<mapping path="/admin/**"/>
+			<beans:ref bean="adminInterceptor"/>
 		</interceptor>
 	</interceptors>
 	

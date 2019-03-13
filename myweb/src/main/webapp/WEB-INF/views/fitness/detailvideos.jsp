@@ -33,5 +33,10 @@
 		<img src="<%=request.getContextPath()%>/resources/img/ads.jpg">
 	</div>
  </div>
+<script>
+$(document).ready(function(){
+  $("iframe").css("width",670);
+});
+</script>
 </body>
 </html>

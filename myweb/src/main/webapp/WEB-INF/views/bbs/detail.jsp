@@ -32,9 +32,9 @@
 	<a href="<%=request.getContextPath() %>/bbs/list?page=${cri.page}&search=${cri.search}&type=${cri.type}">
 		<button class="btn btn-outline-primary registerbtn">목록</button>
 	</a>
-	<c:if test="${user.id == board.writer}">
+	<c:if test="${user.id == board.writer || user.authority.equals('admin')}">   <!-- 여기서 user은 session에 저장된 유저정보임. -->
 		<a href="<%=request.getContextPath() %>/bbs/delete?id=${board.id}">
-			<button class="btn btn-outline-primary registerbtn">삭제</button>
+			<button class="btn btn-outline-primary registerbtn deletebtn">삭제</button>
 		</a>
 	</c:if>
 	<c:if test="${user.id == board.writer}">
@@ -43,5 +43,15 @@
 		</a>
 	</c:if>
 </div>
+<script>
+$(document).ready(function(){
+  $(".deletebtn").click(function(){
+    var msg = confirm("삭제하시겠습니까? ");
+    if (msg == false) {
+      return false;
+    }
+  });
+});
+</script>
 </body>
 </html>
