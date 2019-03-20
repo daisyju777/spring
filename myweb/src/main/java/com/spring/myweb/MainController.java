@@ -60,18 +60,19 @@ public class MainController {
 	  }
 	  
 	   @RequestMapping(value = "/login", method = RequestMethod.GET)
-	    public String loginGet(Model model, Boolean login, String id) {
+	    public String loginGet(Model model, Boolean login, String id,HttpServletRequest request) {
+	     model.addAttribute("oldUrl",request.getHeader("referer")); //로그인화면을 누르기전 이전페이지 정보를 얻어와서 login.jsp에 넘겨줌
 	     model.addAttribute("login",login);
 	     model.addAttribute("id",id);
        return "login";
 	    }
 	   
 	   @RequestMapping(value = "/login", method = RequestMethod.POST)
-	   public String homePost(Model model, AccountVo loginInfo) {
+	   public String homePost(Model model, AccountVo loginInfo, String oldUrl) {
 	     AccountVo user = accountService.signin(loginInfo); //accountService.signin(loginInfo)는 결과로 객체정보를 전달해줌
        model.addAttribute("user",user);
 	     if(user != null) {
-         return "redirect:/";
+         return "redirect:" + oldUrl; //이전 페이지로 돌아가도록 해줌
 	     } else {
 	       model.addAttribute("login",false);
 	       model.addAttribute("id",loginInfo.getId());
@@ -84,7 +85,7 @@ public class MainController {
 	   public String signoutGet(Model model,HttpServletRequest request) {
 	     HttpSession session = request.getSession();
 	     session.removeAttribute("user"); //세션에서  사용자 정보 제거
-	     return "redirect:/";
+	     return "redirect:"+request.getHeader("referer"); //이전페이지로 돌아가도록 하기
 	   }
 	   
 	   @RequestMapping(value = "/health/hottopics", method = RequestMethod.GET)

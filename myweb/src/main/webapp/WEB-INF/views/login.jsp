@@ -18,6 +18,8 @@
 </h1>
 <!-- jsp에서 컨트롤러로 데이터를 전달하려면 form태그를 이용 -->
 <form method="post" action="<%=request.getContextPath() %>/login" class="myform">   <%-- c:if는 조건식(test)이 참일경우 실행하는 문법 --%>
+	<input type="hidden" value="${oldUrl}" name="oldUrl">  <!-- 이전페이지 정보를 얻어와서 post될때 oldUrl로 다시 넘겨줌 -->
+	
 	<div class="imgcontainer">
     	<img src="<%=request.getContextPath()%>/resources/img/image.jpg" alt="Avatar" class="avatar">
     </div>

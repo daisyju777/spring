@@ -33,5 +33,6 @@
 		<img src="<%=request.getContextPath()%>/resources/img/ads.jpg">
 	</div>
  </div>
+ <%@ include file="../comment.jsp" %>
 </body>
 </html>

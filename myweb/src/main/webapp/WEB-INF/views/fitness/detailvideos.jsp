@@ -33,6 +33,7 @@
 		<img src="<%=request.getContextPath()%>/resources/img/ads.jpg">
 	</div>
  </div>
+ <%@ include file="../comment.jsp" %>
 <script>
 $(document).ready(function(){
   $("iframe").css("width",670);
